@@ -7,6 +7,8 @@
     <property name="connection.url">jdbc:mysql://localhost:3306/Users</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <mapping resource="com/wsiiz/domain/mapping.xml"/>
+    <mapping class="com.wsiiz.domain.Competition"/>
+    <mapping class="com.wsiiz.domain.Team"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
