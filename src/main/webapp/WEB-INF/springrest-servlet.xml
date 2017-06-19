@@ -11,7 +11,7 @@
 
  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-  <property name="url" value="jdbc:mysql://localhost:3306/BusStationData"/>
+  <property name="url" value="jdbc:mysql://localhost:3306/Users"/>
   <property name="username" value="ggladko97"/>
   <property name="password" value="123"/>
   <property name="validationQuery" value="SELECT 1"/>
@@ -47,7 +47,16 @@
   <bean id="userDao" class="com.wsiiz.dao.UserDaoImpl">
    <property name="sessionFactory" ref="sessionFactory"/>
   </bean>
+ <bean id="teamDao" class="com.wsiiz.dao.TeamDaoImpl">
+  <property name="sessionFactory" ref="sessionFactory"/>
+ </bean>
+ <bean id="competitionDao" class="com.wsiiz.dao.CompetitionDaoImpl">
+  <property name="sessionFactory" ref="sessionFactory"/>
+ </bean>
 
+ <bean id="teamService" class="com.wsiiz.service.FootballExternalServiceImpl">
+  <property name="teamDao" ref="teamDao"></property>
+ </bean>
 
 </beans>
 
