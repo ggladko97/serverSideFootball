@@ -2,6 +2,8 @@ package com.wsiiz.controller;
 
 import com.wsiiz.dao.UserDao;
 import com.wsiiz.domain.User;
+import com.wsiiz.service.FootballExternalService;
+import com.wsiiz.service.FootballExternalServiceImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,40 +29,38 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
 
-  private UserDao dao;
-
   @Autowired
-  public void setDao(UserDao dao) {
-    this.dao = dao;
-  }
-
-  @RequestMapping(value = "/doLogin", method = RequestMethod.GET)
-  public @ResponseBody String doLogin() throws IOException {
-
-    URL url = new URL("http://api.football-data.org/v1/competitions/398/teams");
-    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-    connection.setDoInput(true);
-    connection.setDoOutput(true);
-    connection.setRequestProperty("X-Auth-Token","1be70cdea5d2462ba93c20e11c19675b");
-
-    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-    StringBuffer jsonString = new StringBuffer();
-    String line;
-
-    while ((line = br.readLine()) != null) {
-      jsonString.append(line);
-    }
+  private FootballExternalService service;
 
 
-    JSONObject responseObject = new JSONObject(jsonString);
-    System.out.println("Response: " + responseObject);
-    br.close();
-    connection.disconnect();
-
+  @RequestMapping(value = "/getCompetition", method = RequestMethod.GET)
+  public @ResponseBody String getCompetition ()
+      throws MalformedURLException {
+    service.getCompetition(2016);
     return "success";
   }
 
+  @RequestMapping(value = "/getTeams", method = RequestMethod.GET)
+  public @ResponseBody String getTeams() throws IOException {
+    service.getTeam(2015);
+    return "success";
+  }
+  @RequestMapping(value = "/getLegueTable", method = RequestMethod.GET)
+  public @ResponseBody String getLegueTable() throws IOException {
+    service.getLegueTable(398);
+    return "success";
+  }
+  @RequestMapping(value = "/getFixtures", method = RequestMethod.GET)
+  public @ResponseBody String getFixtures() throws IOException {
+    service.getFixtures(398,1);
+    return "success";
+  }
+
+  @RequestMapping(value = "/headToHead", method = RequestMethod.GET)
+  public @ResponseBody String headToHead() throws IOException {
+    service.headToHead(149461);
+    return "success";
+  }
 
 
 }
