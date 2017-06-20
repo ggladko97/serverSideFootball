@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -127,5 +128,25 @@ public class FootballExternalServiceImpl implements FootballExternalService {
 
   public TeamDaoImpl getTeamDao() {
     return teamDao;
+  }
+
+  @Override public void insert(Team team) {
+    teamDao.insert(team);
+  }
+
+  @Override public void updateTeam(Team team) {
+    teamDao.updateTeam(team);
+  }
+
+  @Override public List<Team> listTeam() {
+    return teamDao.listTeam();
+  }
+
+  @Override public Team getTeamById(int id) {
+    return teamDao.getTeamById(id);
+  }
+
+  @Override public void removeTeam(int id) {
+    teamDao.removeTeam(id);
   }
 }
