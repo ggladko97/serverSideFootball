@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Competitions</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="page.js"></script>
+</head><body>
+<div >
+  <header id="headd" class="header-shadow">Football data</header>
+  <div class="allMenu">
+    <div class="topnav" id="myTopnav">
+        <a id="home" href="index.html">Home</a>
+        <a id="compet" href="competitions.html">Competitions</a>
+        <a id="teams" href="teams.html">Teams</a>
+        <a id="leagueTable" href="leagueTable.html">League Standings</a>
+    </div>
+  </div>
+  <br>
+  <div align="center">
+    <div>
+      <form id="myform">
+        <input type="search" id="searchTeam" class="searchTeam"></input>
+        <a href="#" id="btnSearch" >Search competition</a>
+      </form>
+    </div>
+    <div>
+      <br><br>
+        <table id="tblMain" align="center" class="tableMain">
+            <tr class="titles">
+                <th>Nr:</th>
+                <th>Caption:</th>
+                <th>league:</th>
+                <th>year:</th>
+                <th>numberOfGames</th>
+                <th>numberOfTeams</th>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <script>
+    $(document).ready(function() {
+      $('#tblMain').empty();
+      $('#btnSearch').click(function() {
+        // $('#myform').validate({
+        // rules:{
+        //     searchTeam:{
+        //         required: true,
+        //     }
+        //   }
+        // });
+        var season = $('#searchTeam').val();
+        console.log(season);
+        var composedUrl = "http://localhost:8080/getCompetition";
+        console.log(composedUrl);
+
+         $.ajax({
+             url: composedUrl,
+             type:'POST',
+             data: JSON.stringify(season),
+             success: function(data) {
+               console.log("I m here");
+               var returnedData = data;
+               console.log(data);
+
+               $.each(returnedData, function(i, val) {
+               var id = JSON.stringify(val.id).replace(/\"/g, '');
+               var caption = JSON.stringify(val.caption).replace(/\"/g, '');
+               var league = JSON.stringify(val.league).replace(/\"/g, '');
+               var year = JSON.stringify(val.year).replace(/\"/g, '');
+               var numberOfGames = JSON.stringify(val.numberOfGames).replace(/\"/g, '');
+               var numberOfTeams = JSON.stringify(val.numberOfTeams).replace(/\"/g, '');
+
+               $('#tblMain').append("<tr><th>"+id+"</th>"+
+               "<th >"+caption +"</th>"+
+               "<th>"+league+"</th>"+
+               "<th>"+year+"</th>"+
+               "<th>"+numberOfGames+"</th>"+
+               "<th>"+numberOfTeams+"</th>"+
+               "</tr>");
+            });
+         }
+     });
+      })
+
+      })
+    </script>
+
+
+</div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teams</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+</head>
+<body>
+<div >
+  <header id="headd" class="header-shadow">Football data</header>
+  <div class="allMenu">
+    <div class="topnav" id="myTopnav">
+        <a id="home" href="index.html">Home</a>
+        <a id="compet" href="competitions.html">Competitions</a>
+        <a id="teams" href="teams.html">Teams</a>
+        <a id="leagueTable" href="leagueTable.html">League Standings</a>
+    </div>
+  </div>
+  <br>
+  <div align="center">
+    <div>
+      <form id="myform">
+        <input type="search" id="searchTeam" class="searchTeam"></input>
+        <a href="#" id="btnSearch" >Search</a>
+      </form>
+    </div>
+    <div>
+      <br><br>
+        <table id="tblMain" align="center" class="tableMain">
+            <tr class="titles">
+                <th>Nr:</th>
+                <th>Logo:</th>
+                <th>Team:</th>
+                <th>Market Value:</th>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <script>
+    $(document).ready(function() {
+      $('#tblMain').empty();
+
+
+      $('#btnSearch').click(function() {
+        $('#myform').validate({
+
+        rules:{
+            searchTeam:{
+                required: true,
+            }
+          }
+        });
+        var season = $('#searchTeam').val();
+        console.log(season);
+        var composedUrl = "http://localhost:8080/getTeams-season-" + season;
+        console.log(composedUrl);
+
+         $.ajax({
+             url: composedUrl,
+             type:'GET',
+             success: function(data) {
+            console.log("I m here");
+             var returnedData = data;
+             console.log(data);
+             $.each(returnedData, function(i, val) {
+               var id = JSON.stringify(val.id).replace(/\"/g, '');
+               var name = JSON.stringify(val.name).replace(/\"/g, '');
+               var marketValue = JSON.stringify(val.marketValue).replace(/\"/g, '');
+               var crestUrl = JSON.stringify(val.crestUrl).replace(/\"/g, '');
+               var img = $('<img />', {src : crestUrl});
+               $('#tblMain').append("<tr><th>"+id+"</th>"+
+               "<th >"+img +"</th>"+
+               "<th>"+name+"</th>"+
+               "<th>"+marketValue+"</th>"+
+               "</tr>");
+
+
+
+            });
+         }
+     });
+      })
+
+      })
+    </script>
+
+
+</div>
+
+</body>
+
+
+</html>

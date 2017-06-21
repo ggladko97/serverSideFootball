@@ -1,0 +1,144 @@
+.header-shadow {
+    /*color: #3ea6cd;*/
+    color: rgba(#111111, 0.79); font-family: 'Helvetica Neuergba(128, 48, 61, 0.9)', sans-serif;
+    font-size: 85px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+#buyNum {
+  align-content: center;
+  text-align:center;
+  vertical-align:middle;
+  font-size: 45pt;
+}
+.topnav {
+   align-content: center;
+   color: rgb(255, 4, 144)
+   text-align:center;
+   font-weight: bold;
+   vertical-align:middle;
+   font-size: 45pt;
+}
+
+body {
+  background-image:url("stadium.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  -webkit-filter: brightness(0.3);
+    filter: brightness(0.3);
+}
+.blogName {
+  align-content: center;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 25pt;
+  font-family: sans-serif;
+  /*background-color:#6D929B;*/
+}
+td {
+  text-align:center;
+   vertical-align:middle;
+}
+.titles {
+  align-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+.list-group {
+  align-content: center;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 30px;
+  background-image:url("busik.jpeg");
+  width: 800px;
+  margin:0 auto;
+  color: rgb(23, 40, 130);
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+.new {
+  background: rgb(71, 163, 208);
+}
+.tableMain {
+    align-content: center;
+    font: bold 20px "Trebuchet MS", Verdana, Arial, Helvetica,
+    sans-serif;
+    color: rgba(#000000, 0.94);
+    border-right: 1px solid #c7f237;
+    border-bottom: 1px solid #b8e733;
+    border-top: 1px solid #21d5bf;
+    letter-spacing: 2px;
+    background-color: rgb(254, 255, 251);
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+}
+td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    padding: 6px 6px 6px 12px;
+    color: #6D929B;
+}
+.btnPropose {
+    text-align: center;
+    align-content: center;
+    display: block;
+    width: 115px;
+    height: 50px;
+    background: #6D929B;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.menu {
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    float: inherit;
+    color: #3a839e;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 45pt;
+}
+.topnav a {
+    float: left;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: overline;
+    font-size: 26px;
+}
+.topnav a:hover {
+    background-color: #bebfd1;
+    color: rgba(#e40dae, 1);
+}
+.topnav a.active {
+    background-color: rgba(#faf006, 0.91);
+    color: #d5ee0a;
+}
+#menu {
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    float: inherit;
+}
+.allMenu {
+  background-color: rgb(184, 254, 141);
+}
+.inp {
+   background-color: #EAE7E7;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   box-shadow: 0 0 30px black;
+
+}
+#sbm {
+    background-color: #2BC71A;
+    font-size: 22px;
+}
